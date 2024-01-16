@@ -9,11 +9,7 @@ with open("credentials.json") as f:
     credentials = data
 
 client = Client(credentials["account_sid"], credentials["auth_token"])
-
-
-
 routes = web.RouteTableDef()
-
 
 app = web.Application()
 app.add_routes([web.static('/', './')])
@@ -30,7 +26,6 @@ async def send_message(request):
     )
     print('send message to {0}'.format(message.sid))
     return web.Response(text="OK")
-
 
 routes.static('/', './')
 app.add_routes(routes)
